@@ -109,3 +109,51 @@ export const StyledTabButton = styled.p`
       color:${(props) => props.bgtext};
       border-left: 2px solid ${colors.grey};
 `;
+
+export const StyledContentScroll = styled.div`
+   widgh: 100%;
+   height: 92%;
+   overflow:scroll
+`;
+
+export const StyledCard = styled.div`
+   display: block;
+   position: fixed;
+   marging: 0;
+   padding: 3px;
+   height: 200px;
+   width: 50%;
+   overflow:scroll;
+   border: 2px solid ${colors.grey};
+   border-radius: 10px;
+   background-color: ${colors.grey};
+   box-shadow: 2px 2px 5px ${colors.sideBar};
+`;
+
+export const StyledClose = styled.p`
+   display: flex;
+   justify-content: right;
+   margin: 0;
+   padding: 0;
+   margin: 10px;
+   font-size: 20px;
+   color: ${colors.primary};
+`;
+
+export const StyledPicture = styled.img`
+   float: left;
+   padding-right: 10px;
+   width: 100px;
+   height: 100px;
+   color: ${colors.primary};
+`;
+
+export const StyledCardH2 = styled.h2`
+   color: ${colors.primary};
+`;
+
+export const StyledCardP = styled.p`
+   text-align: justify;
+   text-justify: inter-word;
+   color: ${colors.primary};
+`;

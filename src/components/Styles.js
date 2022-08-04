@@ -84,7 +84,6 @@ export const StyledHomeButton = styled(Link)`
 
 export const StyledSideBar = styled.div`
    width: 20%;
-   min-width: 160px;
    position: fixed;
    text-size: 100px;
    left: 0;
@@ -198,8 +197,6 @@ export const StyledContentScroll = styled.div`
    width: 98%;
    height: 75%;
    overflow-y: scroll;
-   scrollbar-color: ${colors.dark1};
-   scrollbar-width: thin;
    background-color: ${colors.dark2};
    border: 3px solid ${colors.dark3};
    border-radius: 13px;
