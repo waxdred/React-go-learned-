@@ -1,6 +1,7 @@
-import {StyledContent, StyledTabTitle, StyledTab, StyledSpace, StyledTabCard, StyledTabButton, StyledContentScroll}from "../StyleProduits.js"
+import {StyledContent, StyledTabTitle, StyledTab, StyledSpace, StyledTabCard, StyledTabButton, StyledContentScroll ,StyledTabDiv}from "../StyleProduits.js"
 import {colors}from "../Styles"
-import { AiFillDelete } from 'react-icons/ai';
+import { AiFillDelete} from 'react-icons/ai';
+import {MdOutlineModeEditOutline} from "react-icons/md"
 import VisualCard from "../Produits/VisualCard"
 import { useState } from "react";
 import Notification from "../notification.js"
@@ -36,7 +37,7 @@ export const DsRemove = (props) => {
          <StyledTabTitle bg={colors.sideBar}>Name</StyledTabTitle>
          <StyledTabTitle bg={colors.sideBar}>Description</StyledTabTitle>
          <StyledTabTitle bg={colors.sideBar}>Price</StyledTabTitle>
-         <StyledTabTitle bg={colors.sideBar}>Delete</StyledTabTitle>
+         <StyledTabTitle bg={colors.sideBar}>Delete / Edit</StyledTabTitle>
       </StyledTab>
       <StyledSpace/>
       <Card card={card} setCard={setCard} produit={prod}/>
@@ -46,7 +47,10 @@ export const DsRemove = (props) => {
             <StyledTabCard onClick={() => handleCard(produit, setCard, setPro)}>{produit.name}</StyledTabCard>
             <StyledTabTitle>{produit.description}</StyledTabTitle>
             <StyledTabTitle>{produit.price}</StyledTabTitle>
-            <StyledTabButton onClick={() => update(produit.id)}><AiFillDelete/></StyledTabButton>
+            <StyledTabDiv>
+               <StyledTabButton onClick={() => update(produit.id)}><AiFillDelete/></StyledTabButton>
+               <StyledTabButton onClick={() => console.log("edite")}><MdOutlineModeEditOutline/></StyledTabButton>
+            </StyledTabDiv>
          </StyledTab>
       )}
       <Notification notify={notify} setNotify={setNotify}/>

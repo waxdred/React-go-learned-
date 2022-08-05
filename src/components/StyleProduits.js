@@ -96,11 +96,13 @@ export const StyledTabCard = styled.a`
       }
 `;
 
-export const StyledTabButton = styled.p`
-      display: block;
+export const StyledTabDiv = styled.div`
+      display: flex;
       height: 20px;
       width: 35%;
       text-align: center;
+      align-items: center;
+      justify-content: space-evenly;
       padding: 10px;
       color: ${colors.primary};
       font-size: 20px;
@@ -109,6 +111,18 @@ export const StyledTabButton = styled.p`
       background-color:${(props) => props.bg};
       color:${(props) => props.bgtext};
       border-left: 2px solid ${colors.grey};
+      transition: 1s;
+      &:hover{
+         transition: 1s;
+         cursor: pointer;
+         font-size: 24px;
+      }
+`;
+
+export const StyledTabButton = styled.div`
+      margin: 15px;
+      color: ${colors.primary};
+      font-size: 20px;
       transition: 1s;
       &:hover{
          transition: 1s;
