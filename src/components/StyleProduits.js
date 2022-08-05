@@ -1,5 +1,6 @@
 import {colors} from "./Styles"
 import styled from 'styled-components'
+import { motion } from "framer-motion";
 
 export const StyledMenu = styled.ul`
    margin: 0;
@@ -39,7 +40,7 @@ export const  StyledMenuText = styled.li`
    }
 `;
 
-export const StyledContent = styled.div`
+export const StyledContent = styled(motion.div)`
    display: block;
    margin: 10px;
    margin-top: 0px;
@@ -108,6 +109,12 @@ export const StyledTabButton = styled.p`
       background-color:${(props) => props.bg};
       color:${(props) => props.bgtext};
       border-left: 2px solid ${colors.grey};
+      transition: 1s;
+      &:hover{
+         transition: 1s;
+         cursor: pointer;
+         font-size: 24px;
+      }
 `;
 
 export const StyledContentScroll = styled.div`
@@ -116,7 +123,7 @@ export const StyledContentScroll = styled.div`
    overflow:scroll
 `;
 
-export const StyledCard = styled.div`
+export const StyledCard = styled(motion.div)`
    display: block;
    position: fixed;
    marging: 0;
@@ -156,4 +163,11 @@ export const StyledCardP = styled.p`
    text-align: justify;
    text-justify: inter-word;
    color: ${colors.primary};
+`;
+
+export const StyledApprouve = styled(motion.div)`
+   position: absolute;
+   height: 200px;
+   width: 200px;
+   background-color: pink;
 `;

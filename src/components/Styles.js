@@ -51,7 +51,7 @@ export const MotionHome = styled(motion.div)`
    align-items: center;
    justify-content: center;
 `;
-export const StyledHome = styled.div`
+export const StyledHome = styled(motion.div)`
    display: flex;
    flex-direction: column;
    align-items: center;

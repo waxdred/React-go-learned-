@@ -19,7 +19,11 @@ export const DsShow = (props) => {
    const [card, setCard] = useState(false);
    const [prod, setPro] = useState([]);
    return(
-      <StyledContent>
+      <StyledContent
+         initial={{opacity: 0, y: 500}}
+         animate={{opacity:1, y: 0}}
+         transition={{duration: 1}}
+      >
       <StyledTab>
          <StyledTabTitle bg={colors.sideBar}>Name</StyledTabTitle>
          <StyledTabTitle bg={colors.sideBar}>Description</StyledTabTitle>
