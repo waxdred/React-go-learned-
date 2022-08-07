@@ -1,5 +1,6 @@
 import {colors} from "./Styles"
 import styled from 'styled-components'
+import { motion } from "framer-motion";
 
 export const StyledMenu = styled.ul`
    margin: 0;
@@ -39,7 +40,7 @@ export const  StyledMenuText = styled.li`
    }
 `;
 
-export const StyledContent = styled.div`
+export const StyledContent = styled(motion.div)`
    display: block;
    margin: 10px;
    margin-top: 0px;
@@ -61,7 +62,7 @@ export const StyledTab = styled.div`
    display: flex;
    justify-content: left;
    border: 2px solid ${colors.grey};
-   overflow:scroll
+   overflow:hidden
 `;
 
 export const StyledTabTitle = styled.p`
@@ -70,7 +71,7 @@ export const StyledTabTitle = styled.p`
       width: 35%;
       padding: 10px;
       margin: 0;
-      overflow:scroll;
+      overflow:hidden;
       background-color:${(props) => props.bg};
       color:${(props) => props.bgtext};
       border-left: 2px solid ${colors.grey};
@@ -82,7 +83,7 @@ export const StyledTabCard = styled.a`
       width: 35%;
       padding: 10px;
       margin: 0;
-      overflow:scroll;
+      overflow:hidden;
       background-color:${(props) => props.bg};
       color:${(props) => props.bgtext};
       border-left: 2px solid ${colors.grey};
@@ -95,35 +96,55 @@ export const StyledTabCard = styled.a`
       }
 `;
 
-export const StyledTabButton = styled.p`
-      display: block;
+export const StyledTabDiv = styled.div`
+      display: flex;
       height: 20px;
       width: 35%;
       text-align: center;
+      align-items: center;
+      justify-content: space-evenly;
       padding: 10px;
       color: ${colors.primary};
       font-size: 20px;
       margin: 0;
-      overflow:scroll;
+      overflow:hidden;
       background-color:${(props) => props.bg};
       color:${(props) => props.bgtext};
       border-left: 2px solid ${colors.grey};
+      transition: 1s;
+      &:hover{
+         transition: 1s;
+         cursor: pointer;
+         font-size: 24px;
+      }
+`;
+
+export const StyledTabButton = styled.div`
+      margin: 15px;
+      color: ${colors.primary};
+      font-size: 20px;
+      transition: 1s;
+      &:hover{
+         transition: 1s;
+         cursor: pointer;
+         font-size: 24px;
+      }
 `;
 
 export const StyledContentScroll = styled.div`
    widgh: 100%;
    height: 92%;
-   overflow:scroll
+   overflow:hidden
 `;
 
-export const StyledCard = styled.div`
+export const StyledCard = styled(motion.div)`
    display: block;
    position: fixed;
    marging: 0;
    padding: 3px;
    height: 200px;
    width: 50%;
-   overflow:scroll;
+   overflow:hidden;
    border: 2px solid ${colors.grey};
    border-radius: 10px;
    background-color: ${colors.grey};
@@ -156,4 +177,34 @@ export const StyledCardP = styled.p`
    text-align: justify;
    text-justify: inter-word;
    color: ${colors.primary};
+`;
+
+export const StyledNotify = styled(motion.h3)`
+   text-align: center;
+   text-justify: inter-word;
+`;
+
+export const StyledNotifyBtn = styled(motion.div)`
+   display: flex;
+   margin: 20px;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-around;
+`;
+export const StyledNotifBtn = styled(motion.button)`
+   
+   background-color: ${colors.primary};
+`;
+
+export const StyledApprouve = styled(motion.div)`
+   position: absolute;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   height: 100px;
+   width: 300px;
+   border: 2px solid ${colors.primary};
+   border-radius: 10px;
+   background-color: ${colors.grey};
+   box-shadow: 2px 2px 5px ${colors.sideBar};
 `;

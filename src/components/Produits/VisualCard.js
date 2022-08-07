@@ -5,7 +5,6 @@ import {AiFillCloseCircle} from 'react-icons/ai';
 //need serveur for get dynamique url picture
 export const VisualCard = (props) => {
    const {produit, setCard} = props;
-   console.log(produit.url)
    return (
       <StyledCard>
          <StyledClose onClick={() => setCard(false)}><AiFillCloseCircle/></StyledClose>

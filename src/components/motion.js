@@ -10,10 +10,10 @@ const MotionRoutes = () => {
          const location = useLocation();
          return (
             <AnimatePresence>
-            <Routes location={location} key={location.pathname}>
-               <Route path="/" element={<Home/>}/>
-               <Route path="/Dashboard" element={<Dashboard/>}/>
-            </Routes>
+               <Routes location={location} key={location.pathname}>
+                  <Route path="/" element={<Home/>}/>
+                  <Route path="/Dashboard" element={<Dashboard/>}/>
+               </Routes>
             </AnimatePresence>
          )
 }  

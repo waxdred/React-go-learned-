@@ -1,11 +1,6 @@
 
-import { useState } from "react"
 import {StyledSideBar, StyledLogo, StyledText, StyledMenu, StyledP} from "../components/Styles"
 import Logo from "../assets/logo.png"
-import { Tb3DCubeSphere} from 'react-icons/tb';
-import { MdDashboard, MdOutlinePriceChange} from 'react-icons/md';
-import { HiLogout} from 'react-icons/hi';
-import {motion} from 'framer-motion';
 
 
 
