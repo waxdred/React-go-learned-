@@ -34,7 +34,7 @@ export const DsShow = (props) => {
       <StyledContentScroll>
       {produits.map((produit) => 
          <StyledTab key={produits.id}>
-            <StyledTabCard onClick={(e) => handleCard(produit, setCard, setPro)}>{produit.name}</StyledTabCard>
+            <StyledTabCard onClick={() => handleCard(produit, setCard, setPro)}>{produit.name}</StyledTabCard>
             <StyledTabTitle>{produit.description}</StyledTabTitle>
             <StyledTabTitle>{produit.price}</StyledTabTitle>
          </StyledTab>

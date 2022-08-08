@@ -1,8 +1,6 @@
 import {Snackbar} from "@material-ui/core"
 import {Alert} from "@material-ui/lab"
-import React from 'react'
-import {StyledApprouve, StyledNotify, StyledNotifyBtn, StyledNotifBtn}from "../components/StyleProduits"
-import { motion } from "framer-motion";
+import {StyledApprouve, StyledNotify, StyledNotifyBtn, StyledNotifBtn, StyledEdit, StyledFrom, StyledInput, StyledLabel, StyledText, StyledAdd}from "../components/StyleProduits"
 
 export const Notification = (props) => {
    const {notify, setNotify} = props;
@@ -54,6 +52,39 @@ export const NotifyCheck = (props) => {
                      >Cancel</StyledNotifBtn> 
                </StyledNotifyBtn>
          </StyledApprouve>
+      )
+}
+
+export const NotifyEdit = (props) => {
+   const {popupEdit, setPopupEdit, produitForEdit, setProduitForEdit ,handleReplace} = props;
+   function handleProduit(){
+      // setList(...produit)
+   }
+	function handChange(event){
+		setProduitForEdit({...produitForEdit,[event.target.name]: event.target.value});
+	}	
+   function handlePopup (){
+      setPopupEdit(false);
+      handleReplace(produitForEdit);
+   }
+   console.log("notify: ", produitForEdit.name)
+   if (popupEdit)
+      return (
+         <StyledEdit
+         initial={{opacity: 0, height: 0, width: 0}}
+         animate={{opacity:1, height: "60%", width: "94%"}}
+         transition={{duration: 0.5}}>
+         <StyledFrom>
+         {handleProduit()}
+            <StyledLabel>Nom du produit:</StyledLabel><br/>
+               <StyledInput name="name" value={produitForEdit.name} onChange={(event) => handChange(event)}/>
+            <StyledLabel>Description:</StyledLabel ><br />
+               <StyledText name="description"value={produitForEdit.description} onChange={(event) => handChange(event)}/>
+            <StyledLabel aria-hidden="true">Prix:</StyledLabel>
+               <StyledInput name="price"value={produitForEdit.price} onChange={(event) => handChange(event)}/>
+            <StyledAdd onClick={() => handlePopup()}>confirmation</StyledAdd>
+         </StyledFrom>
+         </StyledEdit>
       )
 }
 

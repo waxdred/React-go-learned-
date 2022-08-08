@@ -1,10 +1,10 @@
-import {StyledContent, StyledTabTitle, StyledTab, StyledSpace, StyledTabCard, StyledTabButton, StyledContentScroll ,StyledTabDiv, StyledApprouve}from "../StyleProduits.js"
+import {StyledContent, StyledTabTitle, StyledTab, StyledSpace, StyledTabCard, StyledTabButton, StyledContentScroll ,StyledTabDiv}from "../StyleProduits.js"
 import {colors}from "../Styles"
 import { AiFillDelete} from 'react-icons/ai';
 import {MdOutlineModeEditOutline} from "react-icons/md"
 import VisualCard from "../Produits/VisualCard"
 import { useState } from "react";
-import { NotifyCheck }from "../notification.js"
+import { NotifyCheck, NotifyEdit}from "../notification.js"
 
 const handleCard = (produit, setCard, setPro) => {
    setCard(true);
@@ -18,15 +18,22 @@ const Card = (props) => {
 }
 
 export const DsRemove = (props) => {
-   const {produits, handleDelete} = props;
-   const [btnDelete, setBtnDelete] = useState(false)
+   const {produits, handleDelete, handleReplace} = props;
    const [popup, setPopup] = useState(false)
+   const [popupEdit, setPopupEdit] = useState(false)
    const [id, setId] = useState('')
    const [card, setCard] = useState(false);
    const [prod, setPro] = useState([]);
-   const [notify, setNotify] = useState({isOpen: false, massage: '', type: ''})
-   const update = (id) => {
-      // handleDelete(id)
+   const [produitForEdit, setProduitForEdit] = useState({});
+
+   const updateEdit = (id) => {
+      const newp = produits.filter((t) => t.id == id)
+      setId(id);
+      setProduitForEdit(...newp)
+      setPopupEdit(true);
+   }
+
+   const updateDelete = (id) => {
       setId(id);
       setPopup(true);
    }
@@ -52,12 +59,14 @@ export const DsRemove = (props) => {
             <StyledTabTitle>{produit.description}</StyledTabTitle>
             <StyledTabTitle>{produit.price}</StyledTabTitle>
             <StyledTabDiv>
-               <StyledTabButton onClick={() => update(produit.id)}><AiFillDelete/></StyledTabButton>
-               <StyledTabButton onClick={() => console.log("edite")}><MdOutlineModeEditOutline/></StyledTabButton>
+               <StyledTabButton onClick={() => updateDelete(produit.id)}><AiFillDelete/></StyledTabButton>
+               <StyledTabButton onClick={() => updateEdit(produit.id)}><MdOutlineModeEditOutline/></StyledTabButton>
             </StyledTabDiv>
          </StyledTab>
       )}
-      <NotifyCheck popup={popup} setPopup={setPopup} id={id} handleDelete={handleDelete}/>
+      <NotifyCheck popup={popup} setPopup={setPopup}  handleDelete={handleDelete} id={id}/>
+      <NotifyEdit popupEdit={popupEdit} setPopupEdit={setPopupEdit} 
+      produitForEdit={produitForEdit} setProduitForEdit={setProduitForEdit} handleReplace={handleReplace}/>
       </StyledContentScroll>
       </StyledContent>
    )

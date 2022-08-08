@@ -8,6 +8,7 @@ import background from "../assets/back.jpeg"
 
 export const colors = {
    primary: "#fff",
+   light: "#fff4",
    dark1: "#7E7E7E",
    dark2: "#373737",
    dark3: "#404040",

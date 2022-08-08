@@ -10,7 +10,7 @@ import { Notification }from "./notification"
 const handleMenu = (side, menu, setDsActive) => {
    menu.map((t) => {
       t.active=false;
-      if (t.name == side)
+      if (t.name === side)
          t.active=true;
    })
    getMenu(menu, setDsActive);
@@ -24,15 +24,15 @@ function getMenu (menu, setDsActive){
 }
 
 const ActiveMenu = (props) => {
-   let { dsActive, menu, setDsActive, produits, handleDelete} = props;
+   let { dsActive, menu, setDsActive, produits, handleDelete, handleAdd, handleReplace} = props;
    getMenu(menu, setDsActive);
    console.log("active: ", dsActive)
-   if (dsActive == "Add")
-            return(<DsAdd/>)
-   else if (dsActive == "Show")
+   if (dsActive === "Add")
+            return(<DsAdd handleAdd={handleAdd}/>)
+   else if (dsActive === "Show")
             return(<DsShow produits={produits}/>)
-   else if (dsActive == "Delete Modify")
-            return(<DsRemove produits={produits} handleDelete={handleDelete}/>)
+   else if (dsActive === "Delete Modify")
+            return(<DsRemove produits={produits} handleDelete={handleDelete} handleReplace={handleReplace}/>)
 }
 
 export const DsProduit = () => {
@@ -59,11 +59,27 @@ export const DsProduit = () => {
       ])
    const [dsActive, setDsActive] = useState()
    const [notify, setNotify] = useState({isOpen: false, massage: '', type: ''})
+
+   const handleAdd = (produit) => {
+		setProduit([...produits, {...produit}]);
+      console.log(produit)
+   }
+
    const handleDelete = (id) => {
+      console.log("i delete id: ", id)
       const copy = [...produits];
-      const updateCopy = copy.filter((c) => c.id != id);
+      const updateCopy = copy.filter((c) => c.id !== id);
       setProduit(updateCopy);
       setNotify({isOpen: true, message: 'Produit deleted', type: 'success'})
+   }
+
+   const handleReplace = (produitForEdit) => {
+      const copy = [...produits];
+      console.log("id", produits[0].id , produitForEdit.id)
+      const updateCopy = copy.filter((c) => c.id !== produitForEdit.id);
+      setProduit(updateCopy);
+		setProduit([...updateCopy, {...produitForEdit}]);
+      setNotify({isOpen: true, message: 'Produit modiy', type: 'success'})
    }
 
    return (
@@ -81,7 +97,8 @@ export const DsProduit = () => {
                      )}
                </StyledMenu>
                <ActiveMenu dsActive={dsActive} 
-                  menu={menu} setMenu={setMenu} setDsActive={setDsActive} produits={produits} handleDelete={handleDelete}/>
+                  menu={menu} setMenu={setMenu} setDsActive={setDsActive} 
+                  produits={produits} handleDelete={handleDelete} handleAdd={handleAdd} handleReplace={handleReplace}/>
             </StyledContentScroll>
          <Myheader/>
          <Notification notify={notify} setNotify={setNotify}/>

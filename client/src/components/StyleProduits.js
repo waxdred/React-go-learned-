@@ -51,6 +51,17 @@ export const StyledContent = styled(motion.div)`
    border-radius: 10px;
 `;
 
+export const StyledContentAdd = styled(motion.div)`
+   display: block;
+   margin: 10px;
+   margin-top: 0px;
+   widgh: 400px;
+   height: 600px;
+   background-color: ${colors.dark3};
+   border: 3px solid ${colors.grey};
+   border-radius: 10px;
+`;
+
 export const StyledSpace = styled.th`
    widgh: 90%;
    height: 3px;
@@ -71,7 +82,7 @@ export const StyledTabTitle = styled.p`
       width: 35%;
       padding: 10px;
       margin: 0;
-      overflow:hidden;
+      overflow:scroll;
       background-color:${(props) => props.bg};
       color:${(props) => props.bgtext};
       border-left: 2px solid ${colors.grey};
@@ -83,7 +94,7 @@ export const StyledTabCard = styled.a`
       width: 35%;
       padding: 10px;
       margin: 0;
-      overflow:hidden;
+      overflow: hidden;
       background-color:${(props) => props.bg};
       color:${(props) => props.bgtext};
       border-left: 2px solid ${colors.grey};
@@ -134,7 +145,7 @@ export const StyledTabButton = styled.div`
 export const StyledContentScroll = styled.div`
    widgh: 100%;
    height: 92%;
-   overflow:hidden
+   overflow: hidden;
 `;
 
 export const StyledCard = styled(motion.div)`
@@ -144,7 +155,7 @@ export const StyledCard = styled(motion.div)`
    padding: 3px;
    height: 200px;
    width: 50%;
-   overflow:hidden;
+   overflow: hidden;
    border: 2px solid ${colors.grey};
    border-radius: 10px;
    background-color: ${colors.grey};
@@ -207,4 +218,63 @@ export const StyledApprouve = styled(motion.div)`
    border-radius: 10px;
    background-color: ${colors.grey};
    box-shadow: 2px 2px 5px ${colors.sideBar};
+`;
+
+export const StyledEdit = styled(motion.div)`
+   position: absolute;
+   top: 59%;
+   left: 50%;
+   overflow: scroll;
+   transform: translate(-50%, -50%);
+   height: 600px;
+   width: 300px;
+   border: 2px solid ${colors.primary};
+   border-radius: 10px;
+   background-color: ${colors.dark1};
+   box-shadow: 2px 2px 5px ${colors.sideBar};
+`;
+
+export const StyledFrom = styled.form`
+   display: flex;
+   flex-direction: column;
+`;
+
+export const StyledInput = styled.input`
+   height: 30px;
+   width: 40%;
+   overflow: hidden;
+   background-color: ${colors.light}
+}
+`;
+
+export const StyledInputFile = styled.input`
+   height: 30px;
+   width: 40%;
+   overflow: hidden;
+}
+`;
+
+export const StyledText = styled.textarea`
+   height: 200px;
+   width: 80%;
+   overflow: hidden;
+   background-color: ${colors.light}
+`;
+
+export const StyledLabel = styled.label`
+   margin: 2%;
+   margin-bottom: 0px;
+`;
+export const StyledAdd = styled.p`
+   text-align: center;
+   padding: 20px;
+   border: 2px solid ${colors.grey};
+   border-radius: 10px;
+   background-color: ${colors.light};
+   &:hover{
+      cursor: pointer;
+      transition: 0.6s;
+      transform: translate(0, -5px);
+      box-shadow: 2px 2px 5px ${colors.sideBar};
+   }
 `;

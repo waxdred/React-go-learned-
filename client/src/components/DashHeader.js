@@ -14,7 +14,7 @@ const SideBar = (props) => {
                               <StyledMenu key={side.id} 
                                  size="16px"
                                  to={side.to}
-                                 onClick={(e) => handleMenu(side.name, sideBars)}
+                                 onClick={() => handleMenu(side.name, sideBars)}
                                  >
                                  <StyledP active={side.active}>{side.icon}</StyledP>
                                  <StyledP active={side.active}>{side.name}</StyledP></StyledMenu>)}
