@@ -26,7 +26,6 @@ function getMenu (menu, setDsActive){
 const ActiveMenu = (props) => {
    let { dsActive, menu, setDsActive, produits, handleDelete, handleAdd, handleReplace} = props;
    getMenu(menu, setDsActive);
-   console.log("active: ", dsActive)
    if (dsActive === "Add")
             return(<DsAdd handleAdd={handleAdd}/>)
    else if (dsActive === "Show")
@@ -62,11 +61,9 @@ export const DsProduit = () => {
 
    const handleAdd = (produit) => {
 		setProduit([...produits, {...produit}]);
-      console.log(produit)
    }
 
    const handleDelete = (id) => {
-      console.log("i delete id: ", id)
       const copy = [...produits];
       const updateCopy = copy.filter((c) => c.id !== id);
       setProduit(updateCopy);
@@ -75,7 +72,6 @@ export const DsProduit = () => {
 
    const handleReplace = (produitForEdit) => {
       const copy = [...produits];
-      console.log("id", produits[0].id , produitForEdit.id)
       const updateCopy = copy.filter((c) => c.id !== produitForEdit.id);
       setProduit(updateCopy);
 		setProduit([...updateCopy, {...produitForEdit}]);

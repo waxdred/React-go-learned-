@@ -25,7 +25,6 @@ export const Notification = (props) => {
 export const NotifyCheck = (props) => {
    const {popup, setPopup, id, handleDelete} = props;
    const deleteId = (id) => {
-      console.log(id)
       handleDelete(id);
       setPopup(false);
    }
@@ -67,7 +66,6 @@ export const NotifyEdit = (props) => {
       setPopupEdit(false);
       handleReplace(produitForEdit);
    }
-   console.log("notify: ", produitForEdit.name)
    if (popupEdit)
       return (
          <StyledEdit
