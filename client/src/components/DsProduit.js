@@ -6,6 +6,7 @@ import DsRemove from "./Produits/remove"
 import Myheader from "./Myheader"
 import { useState } from "react"
 import { Notification }from "./notification"
+import Axios from "axios"
 
 const handleMenu = (side, menu, setDsActive) => {
    menu.map((t) => {
@@ -40,22 +41,18 @@ export const DsProduit = () => {
       {active: false, id: "52baec6f-a880-46b1-b3a9-af743512e536", name: "Delete Modify"},
    ])
    const [produits, setProduit] = useState([
-      {  id: "76671574-9631-4af6-af96-98e131b17cf0", 
-         name: "Produit test", 
-         description: "It is a long established fact that a reader will be distracted by the readable conte", 
-         url: "https://picsum.photos/200",
-         price: "10$"},
-      {  id: "76671574-9631-4af6-af96-98e131b17cf1", 
-         name: "Produit test1", 
-         description: "Produit de beaute super cool", 
-         url: "https://picsum.photos/100",
-         price: "20$"},
-         {id: "76671574-9631-4af6-af96-98e131b17cf2", 
-         name: "Produit test2", 
-         description: "Produit de beaute super cool", 
-         url: "https://picsum.photos/100",
-         price: "30$"},
+         {id: "", 
+         name: "", 
+         description: "", 
+         url: "",
+         price: ""},
       ])
+   const getProduits = () => {
+      Axios.get('http://localhost:3001/get/produits').then((response) => {
+         setProduit(response.data);
+      });
+   }
+
    const [dsActive, setDsActive] = useState()
    const [notify, setNotify] = useState({isOpen: false, massage: '', type: ''})
 
@@ -80,6 +77,7 @@ export const DsProduit = () => {
 
    return (
          <StyledContent>
+            {getProduits()}
             <h1>Produits</h1>
             <StyledContentScroll>
                <StyledMenu>

@@ -2,21 +2,27 @@ import { useState } from "react";
 import {StyledContentAdd, StyledFrom, StyledInput, StyledLabel, StyledText, StyledInputFile, StyledAdd}from "../StyleProduits.js"
 import {v4 as uuidv4} from 'uuid';
 import { Notification }from "../notification"
+import Axios from "axios"
+import { lighten } from "@material-ui/core";
 
 export const DsAdd = (props) => {
    const {handleAdd} = props;
    const [notify, setNotify] = useState({isOpen: false, massage: '', type: ''})
-   const [list, setList] = useState([
-      {  
-         id: "",
-         name: "", 
-         description: "",
-         url: "",
-         prix: "",
-      }])
+   const [list, setList] = useState([])
 	function handChange(event){
 		setList({...list,[event.target.name]: event.target.value});
 	}	
+
+	function handleAddProduit(){
+      const id = uuidv4();
+      Axios.post('http://localhost:3001/add/produit', {
+         id: id,
+         name: list.name,
+         description: list.description,
+         url: list.url,
+         price: list.price,
+      }).then(() => {console.log("Success")});
+	}
 
    function handleConfirmation(){
       list.id = uuidv4();
@@ -24,7 +30,8 @@ export const DsAdd = (props) => {
          setNotify({isOpen: true, message: 'Remplisser tous les champs', type: 'error'})
       }
       else{
-         handleAdd(list);
+         // handleAdd(list);
+         handleAddProduit();
          setList({id: "",
             name: "", 
             description: "",

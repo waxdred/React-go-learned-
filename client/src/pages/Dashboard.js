@@ -8,6 +8,7 @@ import DsPrice from "../components/DsPrice"
 import { Tb3DCubeSphere} from 'react-icons/tb';
 import { MdDashboard, MdOutlinePriceChange} from 'react-icons/md';
 import { HiLogout} from 'react-icons/hi';
+import Axios from "axios"
 
 function getMenu (sideBars, setDsActive){
    sideBars.map((side) =>{ 
