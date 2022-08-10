@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
+	"errors"
 	"log"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
@@ -16,15 +15,34 @@ type Produits struct{
 	Price 		string `json:"price"`
 }
 
+// type Log struct{
+// 	User 		string `json:"name"`
+// 	Passwd 		string `json:"price"`
+// }
+
 func main() {
 	app := fiber.New()	
 	produits := []Produits{}
+	// loggin := Log{User: "jo", Passwd: "jo"}
 
 	//for the react can connect to the server
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "http://localhost:3000",	
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
+
+	// app.Patch("/log", func(c *fiber.Ctx) error {
+	// 	loggin := &Log{};
+	// 	if err  := c.BodyParser(log); err != nil{
+	// 		return err
+	// 	}
+	// 	if loggin.User == log.User && loggin.Passwd == log.Passwd{
+	// 		return errors.New("Succes")
+	// 	}else{
+	// 		return errors.New("Acces denied")
+	// 	} 
+	// 	return c.JSON(produits);
+	// })
 
 	// send full struct produit
 	app.Get("/get/produits", func(c *fiber.Ctx) error {
@@ -33,7 +51,6 @@ func main() {
 
 	// receive Produits add struct
 	app.Post("/add/produit", func(c *fiber.Ctx) error {
-		fmt.Println("request entry")
 		produit := &Produits{};
 		if err  := c.BodyParser(produit); err != nil{
 			return err
@@ -43,19 +60,40 @@ func main() {
 	})
 
 	// remove element in struct
-	app.Patch("/deleted/produit", func(c *fiber.Ctx) error {
+	app.Patch("/delete/produit", func(c *fiber.Ctx) error {
 		produit := &Produits{};
-		tmp := &Produits{};
+		ret := []Produits{}
 		if err  := c.BodyParser(produit); err != nil{
 			return err
 		}
 		i := 0
-		for i < len(produits){
-			if produits[i].ID != produit.ID	{
-				tmp = append(tmp, *produit)
+		for  i < len(produits){
+			if produits[i].ID != produit.ID{
+				ret = append(ret, produits[i]);
 			}
+			i++;
 		}
-		
+		produits = ret
+		return c.JSON(produits);
+	})
+
+	// modity proproduits
+	app.Patch("/modify/produit", func(c *fiber.Ctx) error {
+		produit := &Produits{};
+		ret := []Produits{}
+		if err  := c.BodyParser(produit); err != nil{
+			return err
+		}
+		i := 0
+		for  i < len(produits){
+			if produits[i].ID != produit.ID{
+				ret = append(ret, produits[i]);
+			}else{
+				ret = append(ret, *produit);
+			}
+			i++;
+		}
+		produits = ret
 		return c.JSON(produits);
 	})
 	// connect port

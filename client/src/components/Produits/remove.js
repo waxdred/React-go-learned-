@@ -33,8 +33,8 @@ export const DsRemove = (props) => {
       setPopupEdit(true);
    }
 
-   const updateDelete = (id) => {
-      setId(id);
+   const updateDelete = (produit) => {
+      setId(produit);
       setPopup(true);
    }
 
@@ -59,7 +59,7 @@ export const DsRemove = (props) => {
             <StyledTabTitle>{produit.description}</StyledTabTitle>
             <StyledTabTitle>{produit.price}</StyledTabTitle>
             <StyledTabDiv>
-               <StyledTabButton onClick={() => updateDelete(produit.id)}><AiFillDelete/></StyledTabButton>
+               <StyledTabButton onClick={() => updateDelete(produit)}><AiFillDelete/></StyledTabButton>
                <StyledTabButton onClick={() => updateEdit(produit.id)}><MdOutlineModeEditOutline/></StyledTabButton>
             </StyledTabDiv>
          </StyledTab>

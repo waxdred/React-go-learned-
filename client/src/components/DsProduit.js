@@ -60,18 +60,25 @@ export const DsProduit = () => {
 		setProduit([...produits, {...produit}]);
    }
 
-   const handleDelete = (id) => {
-      const copy = [...produits];
-      const updateCopy = copy.filter((c) => c.id !== id);
-      setProduit(updateCopy);
+   const handleDelete = (list) => {
+      Axios.patch('http://localhost:3001/delete/produit', {
+         id: list.id,
+         name: list.name,
+         description: list.description,
+         url: list.url,
+         price: list.price,
+      }).then(() => {console.log("Success")});
       setNotify({isOpen: true, message: 'Produit deleted', type: 'success'})
    }
 
    const handleReplace = (produitForEdit) => {
-      const copy = [...produits];
-      const updateCopy = copy.filter((c) => c.id !== produitForEdit.id);
-      setProduit(updateCopy);
-		setProduit([...updateCopy, {...produitForEdit}]);
+      Axios.patch('http://localhost:3001/modify/produit', {
+         id: produitForEdit.id,
+         name: produitForEdit.name,
+         description: produitForEdit.description,
+         url: produitForEdit.url,
+         price: produitForEdit.price,
+      }).then(() => {console.log("Success")});
       setNotify({isOpen: true, message: 'Produit modiy', type: 'success'})
    }
 
