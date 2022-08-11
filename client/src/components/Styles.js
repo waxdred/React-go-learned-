@@ -64,6 +64,7 @@ export const StyledHome = styled(motion.div)`
 
 export const StyledHomeButton = styled(Link)`
    display:flex;
+   margin-top: 1em;
    color: ${colors.primary};
    align-items: center;
    text-align: center;
@@ -207,4 +208,24 @@ export const StyledContentScroll = styled.div`
       color: ${colors.darkText}; 
    }  
    color: ${colors.darkText}; 
+`;
+
+export const StyledLoginP = styled.p`
+   color: ${colors.primary};
+   padding: 20px:
+`; 
+
+export const StyledInputLogin = styled.input`
+   height: 25px;
+   background-color: ${colors.dark2};
+   border: 3px solid ${colors.dark3};
+   border-radius: 13px;
+
+`;
+export const  StyledLogin = styled.div`
+   display: flex;
+   flex-direction: column;
+   h1{
+      color: ${colors.primary}
+   }
 `;

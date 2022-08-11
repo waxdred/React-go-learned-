@@ -1,5 +1,4 @@
 import {StyledHomeButton, StyledContainer, MotionHome, StyledHome, StyledLogo} from "../components/Styles"
-import { motion } from "framer-motion";
 import Logo from "../assets/logo.png"
 
 const Home = () => {
@@ -13,7 +12,7 @@ const Home = () => {
             animate={{y: 0, opacity: 1}}
             transition={{duration: 1}}
             exit={{x: 100, opacity: 0}}>
-               <StyledHomeButton size="20" to="/Dashboard">Enter
+               <StyledHomeButton size="20" to="/login">Enter
                </StyledHomeButton>
             </MotionHome>
             </StyledHome>
