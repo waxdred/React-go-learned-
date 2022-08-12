@@ -32,7 +32,10 @@ const ActiveMenu = (props) => {
    else if (dsActive === "Show")
             return(<DsShow produits={produits}/>)
    else if (dsActive === "Delete Modify")
-            return(<DsRemove produits={produits} handleDelete={handleDelete} handleReplace={handleReplace}/>)
+            return(<DsRemove produits={produits}
+                              handleDelete={handleDelete} 
+                        handleReplace={handleReplace}/>)
+
 }
 
 export const DsProduit = () => {
@@ -48,7 +51,7 @@ export const DsProduit = () => {
          price: ""},
       ])
    const getProduits = () => {
-      Axios.get('http://localhost:3001/get/produits').then((response) => {
+      Axios.get('http://localhost:3001/api/produit/get').then((response) => {
          setProduit(response.data);
       });
    }
@@ -61,7 +64,7 @@ export const DsProduit = () => {
    }
 
    const handleDelete = (list) => {
-      Axios.patch('http://localhost:3001/delete/produit', {
+      Axios.patch('http://localhost:3001/api/produit/delete', {
          id: list.id,
          name: list.name,
          description: list.description,
@@ -72,7 +75,7 @@ export const DsProduit = () => {
    }
 
    const handleReplace = (produitForEdit) => {
-      Axios.patch('http://localhost:3001/modify/produit', {
+      Axios.patch('http://localhost:3001/api/produit/modify', {
          id: produitForEdit.id,
          name: produitForEdit.name,
          description: produitForEdit.description,

@@ -15,7 +15,7 @@ export const DsAdd = (props) => {
 
 	function handleAddProduit(){
       const id = uuidv4();
-      Axios.post('http://localhost:3001/add/produit', {
+      Axios.post('http://localhost:3001/api/produit/add', {
          id: id,
          name: list.name,
          description: list.description,

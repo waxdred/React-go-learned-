@@ -84,6 +84,28 @@ export const StyledHomeButton = styled(Link)`
    }
 `;
 
+export const StyledLoginButton = styled.button`
+   display:flex;
+   margin-top: 1em;
+   color: ${colors.primary};
+   align-items: center;
+   text-align: center;
+   padding: 12px 60px;
+   border-radius: 24px;
+   font-size: ${(props) => props.size}px;
+   background-color: transparent;
+   border: 3px solid ${colors.primary};
+   transition: 0.6s;
+   text-decoration: none;
+   &:hover{
+      transition: 0.6s;
+      opacity: 0.6;
+      transform: translate(10px, 10px);
+      border: 3px solid ${colors.dark1};
+      cursor: pointer;
+   }
+`;
+
 export const StyledSideBar = styled.div`
    width: 20%;
    position: fixed;

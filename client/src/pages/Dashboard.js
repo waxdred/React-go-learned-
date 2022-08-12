@@ -1,5 +1,4 @@
 import {Motion, StyledContainerDash} from "../components/Styles"
-import { motion } from "framer-motion";
 import  SideBar from "../components/DashHeader"
 import { useState } from "react";
 import {DsHome} from "../components/DsHome"
@@ -9,6 +8,7 @@ import { Tb3DCubeSphere} from 'react-icons/tb';
 import { MdDashboard, MdOutlinePriceChange} from 'react-icons/md';
 import { HiLogout} from 'react-icons/hi';
 import Axios from "axios"
+import { useNavigate } from 'react-router-dom';
 
 function getMenu (sideBars, setDsActive){
    sideBars.map((side) =>{ 
@@ -27,7 +27,12 @@ const handleMenu = (side, sideBar) => {
 
 
 
+
 const Dashboard = () => {
+   Axios.defaults.withCredentials = true
+   const nav = useNavigate()
+   const navlog = useNavigate()
+   const [redirection, setRedirection] = useState(false);
    const ActiveMenu = (props) => {
       let { dsActive, sideBars, setDsActive} = props;
       getMenu(sideBars, setDsActive);
@@ -37,6 +42,10 @@ const Dashboard = () => {
          return (<DsProduit/>)
       else if (dsActive == "Price")
          return (<DsPrice/>)
+      else if (dsActive == "Logout"){
+         Axios.post('http://localhost:3001/api/loggout',{})
+         setRedirection(true);
+      }
    }
    const [sideBars, setSideBar] = useState([
       {active: true, id: "de4b6abc-4e53-4861-ba41-f085fda5b1bd", icon: <Tb3DCubeSphere/>, name: 'Menu', to: ''},
@@ -44,9 +53,20 @@ const Dashboard = () => {
       {active: false, id: "91373acf-26f4-4eef-9725-b416627bebdb", icon: <MdOutlinePriceChange/>, name: 'Price', to: ''},
       {active: false, id: "20585aa8-402d-46b2-a665-0e65fcb0bcf2", icon: <HiLogout/>, name: 'Logout', to: '/'},
    ]);
+   const auth = () => {
+      Axios.get('http://localhost:3001/api/user', {}).then((response) => {
+         if (response.data.message == "unauthenticated"){
+            nav("/login", { replace: true });
+            setRedirection(false);
+         }else{
+            setRedirection(true);
+         }
+      })
+   }
    const [dsActive, setDsActive] = useState()
    return(
       <StyledContainerDash className="Dashboard">
+         {auth()}
          <Motion
             initial={{opacity: 0}}
             animate={{opacity:1}}
