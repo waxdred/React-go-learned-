@@ -3,8 +3,6 @@ package auth
 import (
 	"strconv"
 	"time"
-	"fmt"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v4"
 )
@@ -24,7 +22,6 @@ func Auth(c *fiber.Ctx) error {
 		return err
 	}
 	if loggin.User != auth.User || loggin.Pass != auth.Pass{
-		fmt.Printf("Acces denied\n")
 		return c.JSON(fiber.Map{
 			"message": "acces denied",
 		})
@@ -47,7 +44,6 @@ func Auth(c *fiber.Ctx) error {
 		HTTPOnly: true,
 	}
 	c.Cookie(&cookie)
-		fmt.Printf("Acces ok\n")
 	return c.JSON(fiber.Map{
 		"message": "succes",
 	});

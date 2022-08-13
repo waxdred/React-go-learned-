@@ -73,7 +73,7 @@ export const StyledTab = styled.div`
    display: flex;
    justify-content: left;
    border: 2px solid ${colors.grey};
-   overflow:hidden
+   overflow: hidden;
 `;
 
 export const StyledTabTitle = styled.p`
@@ -82,7 +82,7 @@ export const StyledTabTitle = styled.p`
       width: 35%;
       padding: 10px;
       margin: 0;
-      overflow:scroll;
+      overflow: hidden;
       background-color:${(props) => props.bg};
       color:${(props) => props.bgtext};
       border-left: 2px solid ${colors.grey};
@@ -118,7 +118,7 @@ export const StyledTabDiv = styled.div`
       color: ${colors.primary};
       font-size: 20px;
       margin: 0;
-      overflow:hidden;
+      overflow: hidden;
       background-color:${(props) => props.bg};
       color:${(props) => props.bgtext};
       border-left: 2px solid ${colors.grey};

@@ -18,7 +18,7 @@ const Login = () => {
    })
 
    const requestLogin = () => {
-      Axios.post('http://localhost:3001/api/log', {
+      Axios.post('http://' + window.location.hostname + ':3001/api/log', {
             user: login.login,
             pass: login.pass,
       }).then((response) => {
@@ -35,7 +35,7 @@ const Login = () => {
    }
 
    const auth = () => {
-      Axios.get('http://localhost:3001/api/user', {}).then((response) => {
+      Axios.get('http://' + window.location.hostname + ':3001/api/user', {}).then((response) => {
          if (response.data.message == "unauthenticated"){
             nav("/login", { replace: true });
             setRedirection(false);
